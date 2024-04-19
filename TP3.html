@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation Playground</title>
+    <style>
+        body{
+            background-color: rgb(22, 22, 22);
+            color: rgb(184, 184, 184);
+            font-size: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+        input{
+            height: 30px;
+            width: 250px;
+            background-color: rgb(58, 58, 58);
+            color: aliceblue;
+            border-radius: 20px;
+            font-size: large;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function calculateSum() {
+            var value1 = Number(document.getElementById('value1').value);
+            var value2 = Number(document.getElementById('value2').value);
+            var sum = value1 + value2;
+            document.getElementById('result').innerText = "The sum is: " + sum;
+        }
+
+        function switchValues() {
+            const field1 = document.getElementById("field1");
+            const field2 = document.getElementById("field2");
+            const tempValue1 = field1.value;
+            const tempValue2 = field2.value;
+            field1.value = tempValue2;
+            field2.value = tempValue1;
+        }
+
+        function separateFullName() {
+            const fullName = document.getElementById("fullName").value;
+            const spaceIndex = fullName.indexOf(" ");
+            const lastName = fullName.slice(0, spaceIndex);
+            const firstName = fullName.slice(spaceIndex + 1);
+            document.getElementById("lastName").textContent = lastName;
+            document.getElementById("firstName").textContent = firstName;
+        }
+
+        function calculateAbsoluteValue() {
+            const number = Number(document.getElementById("number").value);
+            const absoluteValue = Math.abs(number);
+            document.getElementById("absoluteResult").textContent = absoluteValue;
+        }
+
+        function performCalculation() {
+            const num1 = parseInt(document.getElementById("num1").value);
+            const num2 = parseInt(document.getElementById("num2").value);
+            const operation = document.getElementById("operation").value;
+            let result;
+            switch (operation) {
+                case "/":
+                    result = num1 / num2;
+                    break;
+                case "+":
+                    result = num1 + num2;
+                    break;
+                case "-":
+                    result = num1 - num2;
+                    break;
+                case "*":
+                    result = num1 * num2;
+                    break;
+            }
+            document.getElementById("calculationResult").textContent = result;
+        }
+    </script>
+</head>
+<body>
+    <h1>Simple Calculation</h1>
+    <label for="value1">First value:</label>
+    <input type="text" id="value1"><br><br>
+    <label for="value2">Second value:</label>
+    <input type="text" id="value2"><br><br>
+    <button onclick="calculateSum()">Calculate Sum</button><br><br>
+    <p id="result"></p>
+    <hr>
+    <h1>Switch Values</h1>
+    <input type="text" id="field1">
+    <input type="text" id="field2">
+    <button onclick="switchValues()">Switch</button>
+    <hr>
+    <h1>Separate Names</h1>
+    <input type="text" id="fullName">
+    <button onclick="separateFullName()">Separate</button>
+    <p>Last Name: <span id="lastName"></span></p>
+    <p>First Name: <span id="firstName"></span></p>
+    <hr>
+    <h1>Absolute Value</h1>
+    <input type="number" id="number">
+    <button onclick="calculateAbsoluteValue()">Absolute Value</button>
+    <p>Absolute Value: <span id="absoluteResult"></span></p>
+    <hr>
+    <h1>Basic Operations</h1>
+    <input type="number" id="num1">
+    <input type="number" id="num2">
+    <select id="operation">
+        <option value="/">/</option>
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">x</option>
+    </select>
+    <button onclick="performCalculation()">Calculate</button>
+    <p>Result: <span id="calculationResult"></span></p>
+</body>
+</html>
